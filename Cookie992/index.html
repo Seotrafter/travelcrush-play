@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Crush - Match 3 Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary: #82efee;
+            --dark: #000001;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .glow {
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .game-card {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+
+        .feature-card {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .hero-pattern {
+
+            background-size: 30px 30px;
+            background-color: rgba(0, 0, 1, 0.9);
+        }
+
+        .wavy-section {
+            position: relative;
+        }
+
+        .wavy-section::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(45deg, transparent 33.33%, var(--dark) 33.33%, var(--dark) 66.66%, transparent 66.66%);
+            background-size: 30px 30px;
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .feature-card {
+                clip-path: polygon(5% 0, 95% 0, 90% 100%, 10% 100%);
+            }
+
+            .game-card {
+                clip-path: polygon(2% 0, 98% 0, 95% 100%, 5% 100%);
+            }
+        }
+
+        .glow {
+            box-shadow: 0 0 15px #82efee;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px #82efee;
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #000001;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        a:not(.btn-hover) {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        a:not(.btn-hover):hover {
+            text-shadow: 0 0 8px #82efee;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        ul.list-disc li {
+            position: relative;
+        }
+
+        ul.list-disc li::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #82efee;
+            border-radius: 0;
+            position: absolute;
+            left: -20px;
+            top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full bg-black bg-opacity-80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center">
+                    <div class="w-12 h-12 rounded-lg overflow-hidden glow mr-3">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button class="block md:hidden bg-[#82efee] text-black p-2 rounded focus:outline-none">
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black"></span>
+                </button>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-1">
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Features</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Explore</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Gameplay</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Reviews</a>
+                    <a href="/" class="ml-2 px-6 py-2 bg-[#82efee] text-black font-bold glow btn-hover">Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Cookie Policy Hero Section -->
+    <section class="py-20 bg-[#000001] relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-4 pt-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-10 glow-text">
+                <span class="text-[#82efee]">COOKIE</span> POLICY
+            </h1>
+            <div class="max-w-4xl mx-auto bg-black bg-opacity-60 p-8 glow">
+                <p class="text-white text-lg mb-6">
+                    This Cookie Policy explains how Travel Crush - Match 3 Game ("we", "us", or "our") uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them, as well as your rights to control our use of them.
+                </p>
+                <p class="text-white text-lg mb-6">
+                    This Cookie Policy should be read together with our Privacy Policy and Terms and Conditions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Are Cookies Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">WHAT</span> ARE COOKIES?
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Cookies are small data files that are placed on your computer or mobile device when you visit a website. Cookies are widely used by website owners to make their websites work, or to work more efficiently, as well as to provide reporting information.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        Cookies set by the website owner (in this case, Travel Crush - Match 3 Game) are called "first-party cookies." Cookies set by parties other than the website owner are called "third-party cookies." Third-party cookies enable third-party features or functionality to be provided on or through the website (e.g., advertising, interactive content, and analytics). The parties that set these third-party cookies can recognize your computer both when it visits the website in question and also when it visits certain other websites.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why We Use Cookies Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">WHY</span> WE USE COOKIES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        We use cookies for several reasons. Some cookies are required for technical reasons in order for our website to operate, and we refer to these as "essential" or "strictly necessary" cookies. Other cookies also enable us to track and target the interests of our users to enhance the experience on our website. Third parties serve cookies through our website for advertising, analytics, and other purposes.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        The specific types of first and third-party cookies served through our website and the purposes they perform are described below:
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Types of Cookies Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">TYPES</span> OF COOKIES WE USE
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Essential Cookies</h3>
+                        <p class="text-white text-lg mb-4">
+                            These cookies are strictly necessary to provide you with services available through our website and to use some of its features, such as access to secure areas. Because these cookies are strictly necessary to deliver the website, you cannot refuse them without impacting how our website functions.
+                        </p>
+                        <div class="pl-6 mb-4">
+                            <p class="text-white text-lg mb-2"><span class="text-[#82efee] font-bold">Examples:</span> Session cookies for managing user authentication and security.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Performance and Functionality Cookies</h3>
+                        <p class="text-white text-lg mb-4">
+                            These cookies are used to enhance the performance and functionality of our website but are non-essential to their use. However, without these cookies, certain functionality may become unavailable.
+                        </p>
+                        <div class="pl-6 mb-4">
+                            <p class="text-white text-lg mb-2"><span class="text-[#82efee] font-bold">Examples:</span> Cookies that remember your preferences (like language or region), save your game progress, or customize your experience.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Analytics and Customization Cookies</h3>
+                        <p class="text-white text-lg mb-4">
+                            These cookies collect information that is used either in aggregate form to help us understand how our website is being used or how effective our marketing campaigns are, or to help us customize our website for you to enhance your experience.
+                        </p>
+                        <div class="pl-6 mb-4">
+                            <p class="text-white text-lg mb-2"><span class="text-[#82efee] font-bold">Examples:</span> Google Analytics cookies that track user behavior on our website to improve our service.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Advertising Cookies</h3>
+                        <p class="text-white text-lg mb-4">
+                            These cookies are used to make advertising messages more relevant to you. They perform functions like preventing the same ad from continuously reappearing, ensuring that ads are properly displayed, and in some cases selecting advertisements that are based on your interests.
+                        </p>
+                        <div class="pl-6 mb-4">
+                            <p class="text-white text-lg mb-2"><span class="text-[#82efee] font-bold">Examples:</span> Cookies used by advertising partners to build a profile of your interests and show you relevant ads on other sites.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Social Media Cookies</h3>
+                        <p class="text-white text-lg mb-4">
+                            These cookies are used to enable you to share pages and content that you find interesting on our website through third-party social networking and other websites. These cookies may also be used for advertising purposes.
+                        </p>
+                        <div class="pl-6 mb-4">
+                            <p class="text-white text-lg mb-2"><span class="text-[#82efee] font-bold">Examples:</span> Cookies set by social sharing buttons that allow you to share content directly to platforms like Facebook or Twitter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Control Cookies Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">HOW TO</span> CONTROL COOKIES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        You have the right to decide whether to accept or reject cookies. You can exercise your cookie preferences by clicking on the appropriate opt-out links provided in the cookie banner when you first visit our website.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        You can also set or amend your web browser controls to accept or refuse cookies. If you choose to reject cookies, you may still use our website though your access to some functionality and areas of our website may be restricted. As the means by which you can refuse cookies through your web browser controls vary from browser-to-browser, you should visit your browser's help menu for more information.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        In addition, most advertising networks offer you a way to opt out of targeted advertising. If you would like to find out more information, please visit:
+                    </p>
+                    <ul class="list-disc pl-6 text-white text-lg mb-6">
+                        <li class="mb-3"><a href="http://www.aboutads.info/choices/" class="text-[#82efee] hover:underline">Digital Advertising Alliance</a></li>
+                        <li class="mb-3"><a href="https://youradchoices.ca/" class="text-[#82efee] hover:underline">Digital Advertising Alliance of Canada</a></li>
+                        <li class="mb-3"><a href="http://www.youronlinechoices.eu/" class="text-[#82efee] hover:underline">European Interactive Digital Advertising Alliance</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cookie Lifespans Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">COOKIE</span> LIFESPANS
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        The cookies we use have different lifespans:
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-black bg-opacity-60 p-6 glow">
+                            <h3 class="text-xl font-bold mb-3 text-[#82efee]">Session Cookies</h3>
+                            <p class="text-white">These cookies are temporary and are erased when you close your browser. They are used to store temporary information needed during your visit to our website.</p>
+                        </div>
+                        <div class="bg-black bg-opacity-60 p-6 glow">
+                            <h3 class="text-xl font-bold mb-3 text-[#82efee]">Persistent Cookies</h3>
+                            <p class="text-white">These cookies remain on your device after you close your browser. They are used to remember your preferences and actions across different browsing sessions.</p>
+                        </div>
+                    </div>
+                    <p class="text-white text-lg mb-6">
+                        Depending on their function, persistent cookies may be stored on your device for periods ranging from a few days to several years. We regularly review and update our cookie lifespans to ensure they are not kept longer than necessary for their intended purpose.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third-Party Cookies Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">THIRD-PARTY</span> COOKIES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        In addition to our own cookies, we may also use various third-party cookies to report usage statistics of the website, deliver advertisements on and through the website, and so on.
+                    </p>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Google Analytics</h3>
+                        <p class="text-white text-lg mb-4">
+                            We use Google Analytics to help us understand how our website is used. These cookies collect information about your interaction with our website, including the URLs of the pages you visit, your device and browser information, your IP address, and the date and time of your visit.
+                        </p>
+                        <p class="text-white text-lg mb-4">
+                            Google's ability to use and share information collected by Google Analytics about your visits to our site is restricted by the <a href="https://marketingplatform.google.com/about/analytics/terms/us/" class="text-[#82efee] hover:underline">Google Analytics Terms of Use</a> and the <a href="https://policies.google.com/privacy" class="text-[#82efee] hover:underline">Google Privacy Policy</a>.
+                        </p>
+                    </div>
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">Google AdSense</h3>
+                        <p class="text-white text-lg mb-4">
+                            We use Google AdSense to show ads on our website. AdSense uses cookies to serve ads based on your visit to our site and other sites on the Internet. The cookies used by AdSense allow Google and its partners to serve ads to you based on your visit to our site and/or other sites on the Internet.
+                        </p>
+                        <p class="text-white text-lg mb-4">
+                            You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" class="text-[#82efee] hover:underline">Google Ads Settings</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates to Cookie Policy Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">UPDATES TO</span> THIS POLICY
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal, or regulatory reasons. Please therefore re-visit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        The date at the bottom of this Cookie Policy indicates when it was last updated.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">CONTACT</span> US
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        If you have any questions about our use of cookies or this Cookie Policy, please contact us at:
+                    </p>
+                    <p class="text-white text-lg mb-6 text-center">
+                        <a href="mailto:support@travelcrush-play.com" class="text-[#82efee] text-xl font-bold hover:underline">support@travelcrush-play.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <section class="py-12 bg-gradient-to-b from-[#000001] to-[#0a2a2a] text-center">
+        <div class="container mx-auto px-4">
+            <a href="/" class="inline-block px-8 py-4 bg-[#82efee] text-black text-xl font-bold glow btn-hover">
+                BACK TO HOME
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-[#000001] py-10 border-t border-[#82efee]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="/" class="flex items-center mb-6 md:mb-0">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden glow mr-2">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="/Policy356/" class="text-white hover:text-[#82efee] transition duration-300">Privacy Policy</a>
+                    <a href="/Service347/" class="text-white hover:text-[#82efee] transition duration-300">Terms of Use</a>
+                    <a href="/Cookie992/" class="text-white hover:text-[#82efee] transition duration-300">Cookies Policy</a>
+
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2025 Travel Crush. All rights reserved. Travel Crush is a match-3 puzzle game
+                    for entertainment purposes only.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JS for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button.block.md\\:hidden');
+            const mobileMenu = document.querySelector('nav.hidden.md\\:flex');
+
+            mobileMenuButton.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.replace('hidden', 'flex');
+                    mobileMenu.classList.add('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                } else {
+                    mobileMenu.classList.replace('flex', 'hidden');
+                    mobileMenu.classList.remove('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                }
+            });
+        });
+    </script>
+    <?php include '../cookie-consent.php'; ?>
+</body>
+
+</html>

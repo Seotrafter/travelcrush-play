@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Crush - Match 3 Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary: #82efee;
+            --dark: #000001;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .glow {
+            box-shadow: 0 0 15px #82efee;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px #82efee;
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #000001;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        a:not(.btn-hover) {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        a:not(.btn-hover):hover {
+            text-shadow: 0 0 8px #82efee;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full bg-black bg-opacity-80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center">
+                    <div class="w-12 h-12 rounded-lg overflow-hidden glow mr-3">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button class="block md:hidden bg-[#82efee] text-black p-2 rounded focus:outline-none">
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black"></span>
+                </button>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-1">
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Features</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Explore</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Gameplay</a>
+                    <a href="/" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Reviews</a>
+                    <a href="/" class="ml-2 px-6 py-2 bg-[#82efee] text-black font-bold glow btn-hover">Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!-- Privacy Policy Hero Section -->
+    <section class="py-20 bg-[#000001] relative">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-4 pt-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-center mb-10 glow-text">
+                <span class="text-[#82efee]">PRIVACY</span> POLICY
+            </h1>
+            <div class="max-w-4xl mx-auto bg-black bg-opacity-60 p-8 glow">
+                <p class="text-white text-lg mb-6">
+                    At Travel Crush - Match 3 Game, accessible from our website, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that are collected and recorded by Travel Crush - Match 3 Game and how we use it.
+                </p>
+                <p class="text-white text-lg mb-6">
+                    If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Log Files Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">LOG</span> FILES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Travel Crush - Match 3 Game follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and are a part of hosting services' analytics. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any personally identifiable information. The purpose of the information is to analyze trends, administer the site, track users' movement on the website, and gather demographic information.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookies Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">COOKIES</span> AND WEB BEACONS
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Like any other website, Travel Crush - Match 3 Game uses "cookies". These cookies are used to store information including visitors' preferences, and the pages on the website that the visitor accessed or visited. The information is used to optimize the users' experience by customizing our web page content based on visitors' browser type and/or other information.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        For more general information on cookies, please read about cookies in our Cookie Policy section.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google DoubleClick Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">GOOGLE</span> DOUBLECLICK DART COOKIE
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Google is one of the third-party vendors on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.website.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL –
+                        <a href="https://policies.google.com/technologies/ads" class="text-[#82efee] hover:underline">https://policies.google.com/technologies/ads</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section><!-- Advertising Partners Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">OUR</span> ADVERTISING PARTNERS
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Some of advertisers on our site may use cookies and web beacons. Our advertising partners are listed below. Each of our advertising partners has its own Privacy Policy for their policies on user data. For easier access, we hyperlinked to their Privacy Policies below.
+                    </p>
+                    <ul class="list-disc pl-6 text-white text-lg mb-6">
+                        <li class="mb-3">
+                            <p class="font-bold text-[#82efee]">Google</p>
+                            <p><a href="https://policies.google.com/technologies/ads" class="text-[#82efee] hover:underline">https://policies.google.com/technologies/ads</a></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policies Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">PRIVACY</span> POLICIES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        You may consult this list to find the Privacy Policy for each of the advertising partners of Travel Crush - Match 3 Game.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        Third-party ad servers or ad networks use technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on Travel Crush - Match 3 Game, which are sent directly to users' browsers. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        Note that Travel Crush - Match 3 Game has no access to or control over these cookies that are used by third-party advertisers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Third Party Policies Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">THIRD PARTY</span> PRIVACY POLICIES
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Travel Crush - Match 3 Game's Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt out of certain options.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        You can choose to disable cookies through your browser options. More detailed information about cookie management with specific web browsers can be found at the browsers' respective websites.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section><!-- Children Information Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">CHILDREN'S</span> INFORMATION
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.
+                    </p>
+                    <p class="text-white text-lg mb-6">
+                        Travel Crush - Match 3 Game does not knowingly collect any personally identifiable Information from children under the age of 13. Suppose you think that your child provided this kind of information on our website. In that case, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Privacy Policy Section -->
+    <section class="py-16 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">ONLINE</span> PRIVACY POLICY ONLY
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they share and/or collect in Travel Crush - Match 3 Game. This policy does not apply to any information collected offline or via channels other than this website.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consent Section -->
+    <section class="py-16 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 glow-text">
+                    <span class="text-[#82efee]">CONSENT</span>
+                </h2>
+                <div class="bg-black bg-opacity-40 p-8 glow mb-12">
+                    <p class="text-white text-lg mb-6">
+                        By using our website, you at this moment consent to our Privacy Policy and agree to its Terms and Conditions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Home Button -->
+    <section class="py-12 bg-[#000001] text-center">
+        <div class="container mx-auto px-4">
+            <a href="/" class="inline-block px-8 py-4 bg-[#82efee] text-black text-xl font-bold glow btn-hover">
+                BACK TO HOME
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-[#000001] py-10 border-t border-[#82efee]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="/" class="flex items-center mb-6 md:mb-0">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden glow mr-2">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="/Policy356/" class="text-white hover:text-[#82efee] transition duration-300">Privacy Policy</a>
+                    <a href="/Service347/" class="text-white hover:text-[#82efee] transition duration-300">Terms of Use</a>
+                    <a href="/Cookie992/" class="text-white hover:text-[#82efee] transition duration-300">Cookies Policy</a>
+
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2025 Travel Crush. All rights reserved. Travel Crush is a match-3 puzzle game
+                    for entertainment purposes only.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JS for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button.block.md\\:hidden');
+            const mobileMenu = document.querySelector('nav.hidden.md\\:flex');
+
+            mobileMenuButton.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.replace('hidden', 'flex');
+                    mobileMenu.classList.add('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                } else {
+                    mobileMenu.classList.replace('flex', 'hidden');
+                    mobileMenu.classList.remove('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                }
+            });
+        });
+    </script>
+    <?php include '../cookie-consent.php'; ?>
+</body>
+
+</html>

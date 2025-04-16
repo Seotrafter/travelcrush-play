@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Crush - Match 3 Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+        :root {
+            --primary: #82efee;
+            --dark: #000001;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .glow {
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .btn-hover:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .game-card {
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+        }
+
+        .feature-card {
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+        }
+
+        .hero-pattern {
+
+            background-size: 30px 30px;
+            background-color: rgba(0, 0, 1, 0.9);
+        }
+
+        .wavy-section {
+            position: relative;
+        }
+
+        .wavy-section::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(45deg, transparent 33.33%, var(--dark) 33.33%, var(--dark) 66.66%, transparent 66.66%);
+            background-size: 30px 30px;
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .feature-card {
+                clip-path: polygon(5% 0, 95% 0, 90% 100%, 10% 100%);
+            }
+
+            .game-card {
+                clip-path: polygon(2% 0, 98% 0, 95% 100%, 5% 100%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="fixed top-0 left-0 w-full bg-black bg-opacity-80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center">
+                    <div class="w-12 h-12 rounded-lg overflow-hidden glow mr-3">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl md:text-2xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <!-- Mobile menu button -->
+                <button class="block md:hidden bg-[#82efee] text-black p-2 rounded focus:outline-none">
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black mb-1"></span>
+                    <span class="block w-6 h-0.5 bg-black"></span>
+                </button>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-1">
+                    <a href="#features" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Features</a>
+                    <a href="#explore" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Explore</a>
+                    <a href="#gameplay" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Gameplay</a>
+                    <a href="#reviews" class="px-4 py-2 text-white hover:text-[#82efee] font-bold transition duration-300 btn-hover">Reviews</a>
+                    <a href="#download" class="ml-2 px-6 py-2 bg-[#82efee] text-black font-bold glow btn-hover">Download</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 hero-pattern">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center justify-center text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 glow-text">
+                    <span class="text-[#82efee]">MATCH-3</span> PUZZLE ADVENTURE
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-3xl">
+                    Join Ellie on her journey to discover the wonders of the world! Travel the globe,
+                    solve fun puzzles, and meet friends from different cultures.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 mb-12">
+                    <a href="https://play.google.com/store/apps/details?id=com.bebopbee.redlion&pcampaignid=web_share" target="_blank"> <button class="px-8 py-4 bg-[#82efee] text-black text-xl font-bold glow btn-hover">
+                            DOWNLOAD NOW ⬇️
+                        </button></a>
+                    <a href="https://youtu.be/TDeRd6vTiCI" target="_blank"> <button class="px-8 py-4 bg-transparent border-2 border-[#82efee] text-white text-xl font-bold btn-hover">
+                            WATCH TRAILER 🎬
+                        </button></a>
+                </div>
+                <div class="relative w-full max-w-4xl">
+                    <div class="absolute -top-5 -left-5 w-24 h-24 bg-[#82efee] opacity-20 rounded-full blur-xl"></div>
+                    <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-[#82efee] opacity-20 rounded-full blur-xl"></div>
+                    <img src="/src/img/hero.png" alt="Travel Crush Game Screenshot" class="w-full h-auto glow">
+                </div>
+                <div class="mt-8 flex flex-col md:flex-row items-center justify-center gap-6">
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-4xl mr-2">⭐</span>
+                        <div>
+                            <p class="font-bold text-xl">4.5 Stars</p>
+                            <p>11.4K Reviews</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-4xl mr-2">📱</span>
+                        <div>
+                            <p class="font-bold text-xl">100K+</p>
+                            <p>Downloads</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-4xl mr-2">👪</span>
+                        <div>
+                            <p class="font-bold text-xl">Ages 3+</p>
+                            <p>Family Friendly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 glow-text">
+                <span class="text-[#82efee]">AMAZING</span> FEATURES
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">🧩</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">2000+ CHALLENGING PUZZLES</h3>
+                    <p class="text-lg">Journey around the globe while solving thousands of exciting match-3 puzzles!</p>
+                </div>
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">🌎</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">EXPLORE THE WORLD</h3>
+                    <p class="text-lg">Visit beautiful cities including Paris, New York, Tokyo, Barcelona, Beijing and many more!</p>
+                </div>
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">🎁</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">COLLECT SOUVENIRS</h3>
+                    <p class="text-lg">Gather souvenirs from each new city you visit to complete your collection!</p>
+                </div>
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">TRIPSTAGRAM & DAILY TRIVIA</h3>
+                    <p class="text-lg">Discover real-world culture and traditions through our in-game social features!</p>
+                </div>
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">EXPLOSIVE BOOSTERS</h3>
+                    <p class="text-lg">Use powerful boosters to WIN exciting levels and earn fantastic rewards!</p>
+                </div>
+                <div class="feature-card bg-[#121212] p-6 glow">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#82efee]">DAILY EVENTS</h3>
+                    <p class="text-lg">Compete in daily events and reach the top of our match-3 leaderboard!</p>
+                </div>
+            </div>
+            <div class="mt-16 text-center">
+                <p class="text-xl italic mb-4">And the best part?</p>
+                <h3 class="text-2xl md:text-4xl font-bold mb-6">
+                    <span class="text-[#82efee]">NO ADS</span> & <span class="text-[#82efee]">NO INTERNET</span> REQUIRED!
+                </h3>
+                <p class="text-xl">Your perfect travel companion, even in airplane mode!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="py-20 relative bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10" style="background-image: url('/src/img/explore.png'); background-size: cover; background-position: center;"></div>
+        <div class="container mx-auto px-4 relative">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 glow-text">
+                <span class="text-[#82efee]">EXPLORE</span> THE WORLD
+            </h2>
+
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="w-full lg:w-1/2">
+                    <img src="/src/img/explore.png" alt="World Map with Destinations" class="w-full h-auto glow">
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <h3 class="text-2xl md:text-4xl font-bold mb-6 text-[#82efee]">
+                        TRAVEL WITH ELLIE
+                    </h3>
+                    <p class="text-lg mb-6">
+                        Ellie has set out to discover the wonders of the world described by her hero,
+                        Captain Archibald, in his fruitful works and memoirs. Join Ellie on her journey
+                        through cities and cultures, play fun puzzles and daily events, and meet new
+                        friends from around the world.
+                    </p>
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">PARIS</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">NEW YORK</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">TOKYO</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">BARCELONA</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">BEIJING</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">ROME</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">RIO</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">SYDNEY</span>
+                        <span class="px-4 py-2 bg-[#0e4f4e] text-[#82efee] font-bold">+ MORE</span>
+                    </div>
+                    <p class="text-lg font-bold">
+                        Pack your bags, fill your passport, collect stamps and postcards as you
+                        explore the world, and become the next match-three travel hero!
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-black bg-opacity-50 p-6 glow">
+                    <div class="text-4xl mb-4">✈️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#82efee]">COLLECT PASSPORT STAMPS</h3>
+                    <p>Visit each destination and collect unique passport stamps to document your journey!</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-6 glow">
+                    <div class="text-4xl mb-4">🏛️</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#82efee]">DISCOVER LANDMARKS</h3>
+                    <p>Explore famous landmarks and learn interesting facts about each destination!</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-6 glow">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="text-xl font-bold mb-3 text-[#82efee]">EXPERIENCE CULTURES</h3>
+                    <p>Immerse yourself in different cultures through puzzles inspired by local traditions!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gameplay Section -->
+    <section id="gameplay" class="py-20 bg-[#000001]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 glow-text">
+                <span class="text-[#82efee]">EXCITING</span> GAMEPLAY
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-[#82efee]">
+                        MATCH-3 MECHANICS WITH A TWIST
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-[#82efee] text-2xl mr-3">✨</span>
+                            <p class="text-lg">Match colorful candies, cupcakes, and travel items to clear the board</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#82efee] text-2xl mr-3">✨</span>
+                            <p class="text-lg">Create special combinations for powerful effects</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#82efee] text-2xl mr-3">✨</span>
+                            <p class="text-lg">Solve puzzles with unique objectives for each level</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#82efee] text-2xl mr-3">✨</span>
+                            <p class="text-lg">Progress through increasingly challenging puzzles</p>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#82efee] text-2xl mr-3">✨</span>
+                            <p class="text-lg">Unlock special boosters and power-ups to overcome obstacles</p>
+                        </li>
+                    </ul>
+                    <div class="mt-8">
+                        <a href="#download"><button class="px-6 py-3 bg-[#82efee] text-black text-lg font-bold glow btn-hover">
+                                PLAY NOW 🎮
+                            </button></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-[#0a2a2a] p-8 glow">
+                <h3 class="text-2xl md:text-3xl font-bold mb-6 text-center text-[#82efee]">
+                    SPECIAL POWER-UPS
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🍭</div>
+                        <h4 class="text-xl font-bold mb-2">COLOR BOMB</h4>
+                        <p>Clear all candies of the same color from the board!</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🚀</div>
+                        <h4 class="text-xl font-bold mb-2">ROCKET BOOSTER</h4>
+                        <p>Blast away an entire row or column in one move!</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">💥</div>
+                        <h4 class="text-xl font-bold mb-2">BOMB</h4>
+                        <p>Explode and clear a large area around it!</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">🔄</div>
+                        <h4 class="text-xl font-bold mb-2">SHUFFLE</h4>
+                        <p>Rearrange all items on the board for new possibilities!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-4 glow-text">
+                <span class="text-[#82efee]">PLAYER</span> REVIEWS
+            </h2>
+            <div class="flex justify-center mb-16">
+                <div class="flex items-center">
+                    <span class="text-[#82efee] text-3xl">⭐⭐⭐⭐</span>
+                    <span class="text-[#82efee] text-3xl">⭐</span>
+                    <span class="ml-3 text-xl font-bold">4.5/5</span>
+                    <span class="ml-3 text-lg">(11.4K Reviews)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"This game is AMAZING! I love traveling the world while solving puzzles. The graphics are beautiful and the gameplay is addictive!"</p>
+                    <p class="font-bold">- TravelLover22</p>
+                </div>
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"I downloaded this for my kids but now I'm the one who can't stop playing! The puzzles are challenging but not impossible. Love it!"</p>
+                    <p class="font-bold">- GameMom456</p>
+                </div>
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"Great match-3 game with a fun travel theme. The levels get progressively harder but in a good way. No ads is a huge plus!"</p>
+                    <p class="font-bold">- PuzzleMaster</p>
+                </div>
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"I play this on flights and it makes time fly by! Perfect for travel and I love learning about different destinations through the game."</p>
+                    <p class="font-bold">- JetSetter99</p>
+                </div>
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"Fun game with beautiful graphics. I especially love collecting souvenirs from each city. The power-ups make solving difficult levels possible."</p>
+                    <p class="font-bold">- CasualGamer34</p>
+                </div>
+                <div class="bg-black bg-opacity-40 p-6 glow">
+                    <div class="flex items-center mb-3">
+                        <span class="text-[#82efee] text-xl">⭐⭐⭐⭐⭐</span>
+                    </div>
+                    <p class="mb-4">"This is by far the best match-3 game I've played! The travel theme is so unique and I love that I can play without internet. Perfect!"</p>
+                    <p class="font-bold">- GameEnthusiast</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 bg-[#000001] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#82efee] opacity-10 rounded-full blur-3xl"></div>
+
+        <div class="container mx-auto px-4 relative">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-8 glow-text">
+                <span class="text-[#82efee]">DOWNLOAD</span> NOW
+            </h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">
+                Join millions of players around the world in this exciting match-3 adventure!
+                Available for all major platforms.
+            </p>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-16">
+                <a href="https://itunes.apple.com/app/id1184512462" target="_blank"> <button class="px-8 py-4 bg-[#82efee] text-black text-xl font-bold glow btn-hover flex items-center">
+                        <span class="text-3xl mr-3">📱</span> App Store
+                    </button>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.bebopbee.redlion" target="_blank"> <button class="px-8 py-4 bg-[#82efee] text-black text-xl font-bold glow btn-hover flex items-center">
+                        <span class="text-3xl mr-3">🤖</span> Google Play
+                    </button>
+                </a>
+
+            </div>
+
+            <div class="bg-[#0a2a2a] p-8 max-w-3xl mx-auto glow">
+                <h3 class="text-2xl font-bold mb-4 text-center text-[#82efee]">GAME HIGHLIGHTS</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>2000+ challenging puzzles</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>No ads or interruptions</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>No internet required</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>Family-friendly content</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>Regular updates with new content</p>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-[#82efee] text-2xl mr-3">✅</span>
+                        <p>100K+ happy players</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="py-20 bg-gradient-to-b from-[#000001] to-[#0a2a2a]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-center mb-16 glow-text">
+                <span class="text-[#82efee]">JOIN</span> OUR COMMUNITY
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <img src="/src/img/Community.png" alt="Community Screenshot" class="w-full h-auto glow mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-[#82efee]">CONNECT WITH PLAYERS</h3>
+                    <p class="text-lg mb-6">
+                        Join our vibrant community of travelers and puzzle enthusiasts! Share tips,
+                        strategies, and your favorite destinations with players from around the world.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://www.facebook.com/gaming/TravelCrushGame" target="_blank"><button class="px-6 py-3 bg-[#82efee] text-black text-lg font-bold glow btn-hover flex items-center">
+                                <span class="text-2xl mr-2">📱</span> Facebook
+                            </button></a>
+                        <a href="https://www.linkedin.com/company/bebopbee-inc-/about/" target="_blank"> <button class="px-6 py-3 bg-[#82efee] text-black text-lg font-bold glow btn-hover flex items-center">
+                                <span class="text-2xl mr-2">🌐</span> Linkedin
+                            </button></a>
+                        <a href="https://www.youtube.com/channel/UCGnqsEsK0tnLMrUGNyvjk5g/videos" target="_blank"> <button class="px-6 py-3 bg-[#82efee] text-black text-lg font-bold glow btn-hover flex items-center">
+                                <span class="text-2xl mr-2">📸</span> Instagram
+                            </button></a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bg-black bg-opacity-60 p-8 glow mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">WEEKLY EVENTS</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">🏆</span>
+                                <div>
+                                    <p class="font-bold">Monday Madness</p>
+                                    <p>Special puzzles with extra rewards every Monday!</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">🏆</span>
+                                <div>
+                                    <p class="font-bold">World Tour Wednesday</p>
+                                    <p>Travel to a new destination with exclusive challenges!</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">🏆</span>
+                                <div>
+                                    <p class="font-bold">Weekend Tournament</p>
+                                    <p>Compete against players worldwide for amazing prizes!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-black bg-opacity-60 p-8 glow">
+                        <h3 class="text-2xl font-bold mb-4 text-[#82efee]">PLAYER BENEFITS</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">💎</span>
+                                <p>Daily rewards and bonuses just for playing!</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">💎</span>
+                                <p>Special events and exclusive content updates!</p>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-[#82efee] text-2xl mr-3">💎</span>
+                                <p>Share your achievements with friends and family!</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-[#000001] py-10 border-t border-[#82efee]">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="/" class="flex items-center mb-6 md:mb-0">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden glow mr-2">
+                        <img src="/src/icons/logo.png" alt="Travel Crush Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="text-xl font-extrabold text-white glow-text">
+                        <span class="text-[#82efee]">Travel</span> Crush
+                    </h1>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="/Policy356/" class="text-white hover:text-[#82efee] transition duration-300">Privacy Policy</a>
+                    <a href="/Service347/" class="text-white hover:text-[#82efee] transition duration-300">Terms of Use</a>
+                    <a href="/Cookie992/" class="text-white hover:text-[#82efee] transition duration-300">Cookies Policy</a>
+
+                </div>
+            </div>
+
+            <div class="text-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2025 Travel Crush. All rights reserved. Travel Crush is a match-3 puzzle game
+                    for entertainment purposes only.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple JS for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.querySelector('button.block.md\\:hidden');
+            const mobileMenu = document.querySelector('nav.hidden.md\\:flex');
+
+            mobileMenuButton.addEventListener('click', function() {
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.replace('hidden', 'flex');
+                    mobileMenu.classList.add('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                } else {
+                    mobileMenu.classList.replace('flex', 'hidden');
+                    mobileMenu.classList.remove('flex-col', 'absolute', 'top-16', 'right-4', 'bg-black', 'bg-opacity-90', 'p-4', 'glow');
+                }
+            });
+        });
+    </script>
+    <?php include 'cookie-consent.php'; ?>
+</body>
+
+</html>

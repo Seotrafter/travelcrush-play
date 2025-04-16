@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /account/
+
+
+Sitemap: https://travelcrush-play.com/sitemap.xml
+
+
+Crawl-delay: 10
